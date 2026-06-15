@@ -42,4 +42,16 @@ public class SkillManager : MonoBehaviour //
             OnSkillActivated?.Invoke(config);
         }
     }
+
+    public bool IsSkillActive(SkillConfig config)
+    {
+        if (activeSkills.ContainsKey(config))
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
 }

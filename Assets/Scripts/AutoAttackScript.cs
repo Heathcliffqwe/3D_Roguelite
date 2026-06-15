@@ -48,7 +48,12 @@ public class AutoAttackScript : MonoBehaviour
             {
                 if (timer >= attackCooldown)
                 {
-                    Instantiate(arrow, firePoint.position, transform.rotation); //
+                    for (int j = 0; j < arrowCount; j++)
+                    {
+                        float açıOffset = (j - (arrowCount - 1) / 2f) * 10f;
+                        Quaternion okRotasyonu = transform.rotation * Quaternion.Euler(0, açıOffset, 0);
+                        Instantiate(arrow, firePoint.position, okRotasyonu);
+                    }
                     timer = 0;
                 }
             }
