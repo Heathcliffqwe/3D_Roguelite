@@ -14,6 +14,7 @@ public class EnemyScript : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
+        if(curHealth <= 0){return;}
         curHealth -= damage;
         healthBar.UpdateHealth((float)curHealth/(float)maxHealth);
         if (curHealth <= 0)
