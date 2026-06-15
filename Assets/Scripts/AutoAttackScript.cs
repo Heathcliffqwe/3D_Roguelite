@@ -3,6 +3,7 @@ using UnityEngine;
 public class AutoAttackScript : MonoBehaviour
 {
     public GameObject arrow;
+    public int arrowCount = 1;
     public Transform firePoint;
     public float attackCooldown;
     public float attackRange;
@@ -43,11 +44,13 @@ public class AutoAttackScript : MonoBehaviour
             float aciFarki = Quaternion.Angle(transform.rotation, hedef);
             if(aciFarki > 5f)
                 return;
-
-            if (timer >= attackCooldown)
+            for (int i = 0; i < arrowCount; i++)
             {
-                Instantiate(arrow, firePoint.position, transform.rotation); //
-                timer = 0;
+                if (timer >= attackCooldown)
+                {
+                    Instantiate(arrow, firePoint.position, transform.rotation); //
+                    timer = 0;
+                }
             }
         }
     }
