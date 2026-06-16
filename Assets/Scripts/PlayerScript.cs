@@ -11,7 +11,7 @@ public class PlayerScript : MonoBehaviour
         curHealth = maxHealth;
     }
 
-    public void TakeDamage(int damage)
+    public void TakeDamageFromEnemys(int damage)
     {
         if (curHealth <= 0) return;
         curHealth -= damage;

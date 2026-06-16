@@ -187,4 +187,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BowScript
   speed: 5
-  damage: 20
+  damage: 2
+  isBurning: 1
+  burningDuration: 3
+  burningDamage: 5

@@ -241,8 +241,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5957bb51060a72144a2331d2d67871fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyScript
+  Player: {fileID: 3246815422265297470, guid: 025d8990b9cb1634ca5822f74619bfb9, type: 3}
   maxHealth: 50
   healthBar: {fileID: 4075074706243807262}
+  moveSpeed: 3
+  attackRange: 5
+  attackDamage: 10
+  attackCooldown: 5
 --- !u!1 &5502806489539283489
 GameObject:
   m_ObjectHideFlags: 0
