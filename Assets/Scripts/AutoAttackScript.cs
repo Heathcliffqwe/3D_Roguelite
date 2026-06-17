@@ -44,19 +44,18 @@ public class AutoAttackScript : MonoBehaviour
             float aciFarki = Quaternion.Angle(transform.rotation, hedef);
             if(aciFarki > 5f)
                 return;
-            for (int i = 0; i < arrowCount; i++)
+            if (timer >= attackCooldown)
             {
-                if (timer >= attackCooldown)
+                for (int j = 0; j < arrowCount; j++)
                 {
-                    for (int j = 0; j < arrowCount; j++)
-                    {
-                        float açıOffset = (j - (arrowCount - 1) / 2f) * 10f;
-                        Quaternion okRotasyonu = transform.rotation * Quaternion.Euler(0, açıOffset, 0);
-                        Instantiate(arrow, firePoint.position, okRotasyonu);
-                    }
-                    timer = 0;
+                    float açıOffset = (j - (arrowCount - 1) / 2f) * 10f;
+                    Quaternion okRotasyonu = transform.rotation * Quaternion.Euler(0, açıOffset, 0);
+                    Instantiate(arrow, firePoint.position, okRotasyonu);
                 }
+
+                timer = 0;
             }
+
         }
     }
 }

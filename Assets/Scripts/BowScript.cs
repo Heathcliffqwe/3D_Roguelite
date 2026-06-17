@@ -5,7 +5,7 @@ public class BowScript : MonoBehaviour
 {
     public float speed;
     public float damage;
-    public bool isBurning = false;
+    public bool isBurning;
     public float burningDuration;
     public float burningDamage; 
     void Start()

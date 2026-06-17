@@ -15,4 +15,4 @@ MonoBehaviour:
   skillName: 
   Icon: {fileID: 0}
   skillDuration: 3
-  burnDamage: 0
+  burnDamage: 2

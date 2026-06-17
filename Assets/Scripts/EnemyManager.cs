@@ -2,15 +2,15 @@ using UnityEngine;
 
 public class EnemyManager : MonoBehaviour
 {
-    private float maxX = 15f;
-    private float minX = -15f;
-    private float maxZ = 15f;
-    private float minZ = -15f;
+    private float maxX = 10f;
+    private float minX = -10f;
+    private float maxZ = 10f;
+    private float minZ = -10f;
     public GameObject enemy;
     private int maxEnemies = 5;
     public GameObject[] defaultenemies;
     public GameObject bossenemy;
-    public float bossSpawnTime = 10f;
+    public float bossSpawnTime = 5f;
     private float elapsedTime;
     public bool isBossSpawned;
     void Start()
@@ -18,7 +18,7 @@ public class EnemyManager : MonoBehaviour
         elapsedTime = 0;
         for (int i = 0; i < maxEnemies; i++)
         {
-            Vector3 random= new Vector3(Random.Range(minX, maxX), 0.5f, Random.Range(minZ, maxZ));
+            Vector3 random= new Vector3(Random.Range(minX, maxX), 0f, Random.Range(minZ, maxZ));
             Instantiate(defaultenemies[Random.Range(0, defaultenemies.Length)], random, Quaternion.identity);
         }
     }
@@ -31,7 +31,7 @@ public class EnemyManager : MonoBehaviour
             var enemies = GameObject.FindGameObjectsWithTag("Enemy");
             if (enemies.Length < maxEnemies)
             {
-                Vector3 random = new Vector3(Random.Range(minX, maxX), 0.5f, Random.Range(minZ, maxZ));
+                Vector3 random = new Vector3(Random.Range(minX, maxX), 0f, Random.Range(minZ, maxZ));
                 Instantiate(defaultenemies[Random.Range(0, defaultenemies.Length)], random, Quaternion.identity);
             }
 
@@ -45,6 +45,7 @@ public class EnemyManager : MonoBehaviour
         {
             Vector3 random = new Vector3(Random.Range(minX, maxX), 0.5f, Random.Range(minZ, maxZ));
             Instantiate(bossenemy, random, Quaternion.identity);
+            elapsedTime = 0;
         }
 
     }

@@ -92,7 +92,7 @@ GameObject:
   - component: {fileID: 579229486293763117}
   m_Layer: 0
   m_Name: Enemyv2
-  m_TagString: Enemy
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -247,7 +247,7 @@ MonoBehaviour:
   moveSpeed: 3
   attackRange: 5
   attackDamage: 10
-  attackCooldown: 5
+  attackCooldown: 1
 --- !u!1 &5502806489539283489
 GameObject:
   m_ObjectHideFlags: 0
