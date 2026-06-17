@@ -1863,6 +1863,8 @@ GameObject:
   - component: {fileID: 6107724994750658353}
   - component: {fileID: 5001707013270486805}
   - component: {fileID: 571076262792412070}
+  - component: {fileID: 3229628163861098562}
+  - component: {fileID: -9031061064613906457}
   m_Layer: 0
   m_Name: Vampire A Lusth 1
   m_TagString: Enemy
@@ -1930,6 +1932,9 @@ MonoBehaviour:
   attackDamage: 5
   attackCooldown: 1
   enemyName: Vampire
+  agent: {fileID: 0}
+  timer: 0
+  maxtime: 1
 --- !u!136 &5001707013270486805
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -1980,6 +1985,51 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!136 &3229628163861098562
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5544872031408746063}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Height: 3
+  m_Direction: 1
+  m_Center: {x: 0, y: 1, z: 0}
+--- !u!195 &-9031061064613906457
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5544872031408746063}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.5
+  m_Speed: 3.5
+  m_Acceleration: 40
+  avoidancePriority: 50
+  m_AngularSpeed: 720
+  m_StoppingDistance: 2
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 2
+  m_BaseOffset: 0
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 0
 --- !u!1 &5667586549909351128
 GameObject:
   m_ObjectHideFlags: 0

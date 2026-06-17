@@ -948,6 +948,8 @@ GameObject:
   - component: {fileID: 8444581971106596482}
   - component: {fileID: 7925409278010918760}
   - component: {fileID: 1680996995737732002}
+  - component: {fileID: 7092619159839944197}
+  - component: {fileID: -3206953731149660890}
   m_Layer: 0
   m_Name: Warrok W Kurniawan 1
   m_TagString: Enemy
@@ -1015,6 +1017,9 @@ MonoBehaviour:
   attackDamage: 20
   attackCooldown: 3
   enemyName: Warrok(Boss)
+  agent: {fileID: 0}
+  timer: 0
+  maxtime: 1
 --- !u!54 &7925409278010918760
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1065,6 +1070,51 @@ CapsuleCollider:
   m_Height: 3
   m_Direction: 1
   m_Center: {x: 0, y: 1.2, z: 0}
+--- !u!136 &7092619159839944197
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3512440491449740540}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Height: 3
+  m_Direction: 1
+  m_Center: {x: 0, y: 1, z: 0}
+--- !u!195 &-3206953731149660890
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3512440491449740540}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.5
+  m_Speed: 3.5
+  m_Acceleration: 40
+  avoidancePriority: 50
+  m_AngularSpeed: 720
+  m_StoppingDistance: 2
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 2
+  m_BaseOffset: 0
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 0
 --- !u!1 &3626253102537692596
 GameObject:
   m_ObjectHideFlags: 0

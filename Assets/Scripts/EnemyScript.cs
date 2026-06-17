@@ -19,6 +19,9 @@ public class EnemyScript : MonoBehaviour
     private GameObject _player;
     private Animator _animator;
     public string enemyName;
+    public NavMeshAgent agent;
+    public float timer = 0.0f;
+    public float maxtime = 1.0f;
     
     private int curHealth;
 
@@ -27,6 +30,8 @@ public class EnemyScript : MonoBehaviour
         _animator = GetComponent<Animator>();
         _player = GameObject.FindGameObjectWithTag("Player");
         curHealth = maxHealth;
+        agent = GetComponent<NavMeshAgent>();
+        agent.speed = moveSpeed;
     }
     
 
@@ -34,7 +39,6 @@ public class EnemyScript : MonoBehaviour
     {
         if(curHealth <= 0){return;}
         curHealth -= damage;
-        Debug.Log("TakeDamage çalıştı: " + enemyName);
         EnemyHbUI.Instance.ShowEnemy(enemyName, (float)curHealth/(float)maxHealth);
         if (curHealth <= 0)
         {
@@ -61,23 +65,27 @@ public class EnemyScript : MonoBehaviour
         }
     }                                                          //
     
-    void FixedUpdate()
+    void Update()
     {
         if (_player == null) return;
         float mesafe = Vector3.Distance(transform.position, _player.transform.position);
-        var direction = (_player.transform.position - transform.position).normalized;
-        direction.y = 0;
-        Quaternion dir = Quaternion.LookRotation(direction);
-        isMoveing = true;
-        transform.rotation = Quaternion.Slerp(transform.rotation, dir, 10f * Time.deltaTime);
-        transform.position += direction * Time.deltaTime * moveSpeed;
+        timer -= Time.deltaTime;
+        if (timer <= 0.0f)
+        {
+            agent.SetDestination(_player.transform.position);
+            timer = maxtime;
+        }
+        // transform.rotation = Quaternion.Slerp(transform.rotation, dir, 10f * Time.deltaTime);
+        // transform.position += direction * Time.deltaTime * moveSpeed;
         
         if( mesafe < attackRange)
         {
+            agent.isStopped = true;
             _animator.SetBool("isattack", true);
         }
         if( mesafe > attackRange)
         {
+            agent.isStopped = false;
             _animator.SetBool("isattack", false);
         }
     }
@@ -90,7 +98,6 @@ public class EnemyScript : MonoBehaviour
         {
             isMoveing = false;
             isAttacking = true;
-            Debug.Log("true");
             other.GetComponent<PlayerScript>().TakeDamageFromEnemys((int)attackDamage);
             StartCoroutine(WaitCoroutine(attackCooldown));
         }
@@ -98,8 +105,6 @@ public class EnemyScript : MonoBehaviour
 
     IEnumerator WaitCoroutine(float cooldown)
     {
-        Debug.Log("nfalse");
-        Debug.Log("false");
         isAttacking = false;
         
         yield return new WaitForSeconds(attackCooldown);

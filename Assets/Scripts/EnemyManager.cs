@@ -2,10 +2,6 @@ using UnityEngine;
 
 public class EnemyManager : MonoBehaviour
 {
-    private float maxX = 10f;
-    private float minX = -10f;
-    private float maxZ = 10f;
-    private float minZ = -10f;
     public Transform[] spawnPoints;
     public Transform bossSpawn;
     private int maxEnemies = 5;
@@ -19,8 +15,8 @@ public class EnemyManager : MonoBehaviour
         elapsedTime = 0;
         for (int i = 0; i < maxEnemies; i++)
         {
-            Vector3 random= new Vector3(Random.Range(minX, maxX), 0f, Random.Range(minZ, maxZ));
-            Instantiate(defaultenemies[Random.Range(0, defaultenemies.Length)], random, Quaternion.identity);
+            Vector3 spawnpos = spawnPoints[Random.Range(0, spawnPoints.Length)].position;
+            Instantiate(defaultenemies[Random.Range(0, defaultenemies.Length)], spawnpos, Quaternion.identity);
         }
     }
     
