@@ -2853,6 +2853,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: EnemyHb
       objectReference: {fileID: 0}
+    - target: {fileID: 4516788511896281240, guid: 5bbe9ec6df416384781020adfd9bd103, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

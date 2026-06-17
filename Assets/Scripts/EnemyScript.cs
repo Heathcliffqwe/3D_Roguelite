@@ -61,7 +61,7 @@ public class EnemyScript : MonoBehaviour
         }
     }                                                          //
     
-    void Update()
+    void FixedUpdate()
     {
         if (_player == null) return;
         float mesafe = Vector3.Distance(transform.position, _player.transform.position);

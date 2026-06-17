@@ -6,7 +6,8 @@ public class EnemyManager : MonoBehaviour
     private float minX = -10f;
     private float maxZ = 10f;
     private float minZ = -10f;
-    public GameObject enemy;
+    public Transform[] spawnPoints;
+    public Transform bossSpawn;
     private int maxEnemies = 5;
     public GameObject[] defaultenemies;
     public GameObject bossenemy;
@@ -31,8 +32,8 @@ public class EnemyManager : MonoBehaviour
             var enemies = GameObject.FindGameObjectsWithTag("Enemy");
             if (enemies.Length < maxEnemies)
             {
-                Vector3 random = new Vector3(Random.Range(minX, maxX), 0f, Random.Range(minZ, maxZ));
-                Instantiate(defaultenemies[Random.Range(0, defaultenemies.Length)], random, Quaternion.identity);
+                Vector3 spawnpos = spawnPoints[Random.Range(0, spawnPoints.Length)].position;
+                Instantiate(defaultenemies[Random.Range(0, defaultenemies.Length)], spawnpos, Quaternion.identity);
             }
 
             if (enemies.Length > maxEnemies)
@@ -43,9 +44,9 @@ public class EnemyManager : MonoBehaviour
 
         if (elapsedTime >= bossSpawnTime && !isBossSpawned)
         {
-            Vector3 random = new Vector3(Random.Range(minX, maxX), 0.5f, Random.Range(minZ, maxZ));
-            Instantiate(bossenemy, random, Quaternion.identity);
+            Instantiate(bossenemy, bossSpawn.position, Quaternion.identity);
             elapsedTime = 0;
+            isBossSpawned = true;
         }
 
     }

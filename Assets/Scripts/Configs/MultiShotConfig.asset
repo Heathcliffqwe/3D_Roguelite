@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::MultiShotConfig
   skillName: 
   Icon: {fileID: 0}
-  extraArrow: 1
+  extraArrow: 2
