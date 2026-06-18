@@ -1882,7 +1882,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 1034.232, y: 0, z: 6270.5254}
-  m_LocalScale: {x: 1, y: 1.0124, z: 1}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8306970060855306118}
@@ -1934,6 +1934,7 @@ MonoBehaviour:
   enemyName: Vampire
   agent: {fileID: 0}
   timer: 0
+  attackTimer: 0
   maxtime: 1
 --- !u!136 &5001707013270486805
 CapsuleCollider:
@@ -1957,7 +1958,7 @@ CapsuleCollider:
   m_Radius: 0.5
   m_Height: 3
   m_Direction: 1
-  m_Center: {x: 0, y: 1, z: 0}
+  m_Center: {x: 0, y: 1.2, z: 0}
 --- !u!54 &571076262792412070
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -2022,14 +2023,14 @@ NavMeshAgent:
   m_Acceleration: 40
   avoidancePriority: 50
   m_AngularSpeed: 720
-  m_StoppingDistance: 2
+  m_StoppingDistance: 0.3
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1
-  m_Height: 2
+  m_Height: 1
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
-  m_ObstacleAvoidanceType: 0
+  m_ObstacleAvoidanceType: 4
 --- !u!1 &5667586549909351128
 GameObject:
   m_ObjectHideFlags: 0

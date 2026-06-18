@@ -26,6 +26,7 @@ public class BowScript : MonoBehaviour
             speed = 0f;
             if (isBurning)
             {
+                Debug.Log("Burning");
                 other.GetComponent<EnemyScript>().ApplyBurn(burningDuration,burningDamage);
             }
             transform.SetParent(other.transform);

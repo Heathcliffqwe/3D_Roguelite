@@ -7,21 +7,21 @@ using Object = System.Object;
 
 public class EnemyScript : MonoBehaviour
 {
-    public PlayerScript Player;
     public int maxHealth;
     public HealthBar healthBar;
     public float moveSpeed = 5f;
-    public float attackRange = 3f;
+    public float attackRange = 2f;
     public int attackDamage;
     public float attackCooldown;
     private bool isAttacking;
-    private bool isMoveing;
+    private bool isMoveing; 
     private GameObject _player;
     private Animator _animator;
     public string enemyName;
     public NavMeshAgent agent;
-    public float timer = 0.0f;
-    public float maxtime = 1.0f;
+    public float timer;
+    private float attackTimer;
+    private float maxtime = 1.0f;
     
     private int curHealth;
 
@@ -69,12 +69,12 @@ public class EnemyScript : MonoBehaviour
     {
         if (_player == null) return;
         float mesafe = Vector3.Distance(transform.position, _player.transform.position);
-        timer -= Time.deltaTime;
-        if (timer <= 0.0f)
-        {
+        // timer -= Time.deltaTime;
+        // if (timer <= 0.0f)
+        // {
             agent.SetDestination(_player.transform.position);
             timer = maxtime;
-        }
+        //}
         // transform.rotation = Quaternion.Slerp(transform.rotation, dir, 10f * Time.deltaTime);
         // transform.position += direction * Time.deltaTime * moveSpeed;
         
@@ -82,6 +82,12 @@ public class EnemyScript : MonoBehaviour
         {
             agent.isStopped = true;
             _animator.SetBool("isattack", true);
+            attackTimer -= Time.deltaTime;
+            if (attackTimer <= 0.0f)
+            {
+                _player.GetComponent<PlayerScript>().TakeDamageFromEnemys(attackDamage);
+                attackTimer = attackCooldown;
+            }
         }
         if( mesafe > attackRange)
         {

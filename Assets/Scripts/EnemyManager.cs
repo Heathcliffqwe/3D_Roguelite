@@ -7,9 +7,9 @@ public class EnemyManager : MonoBehaviour
     private int maxEnemies = 5;
     public GameObject[] defaultenemies;
     public GameObject bossenemy;
-    public float bossSpawnTime = 5f;
+    public float bossSpawnTime = 10f;
     private float elapsedTime;
-    public bool isBossSpawned;
+    public bool isBossAlive;
     void Start()
     {
         elapsedTime = 0;
@@ -38,11 +38,11 @@ public class EnemyManager : MonoBehaviour
             }
         }
 
-        if (elapsedTime >= bossSpawnTime && !isBossSpawned)
+        if (elapsedTime >= bossSpawnTime && !isBossAlive)
         {
             Instantiate(bossenemy, bossSpawn.position, Quaternion.identity);
             elapsedTime = 0;
-            isBossSpawned = true;
+            isBossAlive = true;
         }
 
     }
