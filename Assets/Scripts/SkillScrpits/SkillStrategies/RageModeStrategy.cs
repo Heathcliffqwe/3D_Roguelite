@@ -4,71 +4,23 @@ public class RageModeStrategy : ISkillStrategy
 {
     public RageModeConfig _config;
     public SkillManager _manager;
+    public StatSet stats;
 
-    public RageModeStrategy(RageModeConfig config, SkillManager manager)
+    public RageModeStrategy(RageModeConfig config, SkillManager manager, StatSet stats)
     {
         _config = config;
         _manager = manager;
+        this.stats = stats;
     }
 
     public void Activate()
     {
-        foreach (var skill in _manager.activeSkills)
-        {
-            if (skill.Key.Equals(_config))
-            {
-                continue;
-            }
-            else
-            {
-                skill.Value.Deactivate();
-                if (skill.Key is MultiShotConfig multi)
-                {
-                    multi.extraArrow *= (int)_config.rageMultipler;
-                }
-
-                if (skill.Key is BurnDamageConfig burn)
-                {
-                    burn.skillDuration *= (int)_config.rageMultipler;
-                }
-
-                if (skill.Key is AttackSpeedConfig speed)
-                {
-                    speed.speedMultipler *= (int)_config.rageMultipler;
-                }
-                skill.Value.Activate();
-            }
-        }
+        stats.Add(new Modifier("Damage", ModType.More, _config.rageMultipler, this));
     }
 
     public void Deactivate()
     {
-        foreach (var skill in _manager.activeSkills)
-        {
-            if (skill.Key.Equals(_config))
-            {
-                continue;
-            }
-            else
-            {
-                skill.Value.Deactivate();
-                if (skill.Key is MultiShotConfig multi)
-                {
-                    multi.extraArrow /= (int)_config.rageMultipler;
-                }
-
-                if (skill.Key is BurnDamageConfig burn)
-                {
-                    burn.skillDuration /= (int)_config.rageMultipler;
-                }
-
-                if (skill.Key is AttackSpeedConfig speed)
-                {
-                    speed.speedMultipler /= (int)_config.rageMultipler;
-                }
-                skill.Value.Activate();
-            }
-        }
+        stats.RemoveBySource(this);
     }
 
     public void Apply()

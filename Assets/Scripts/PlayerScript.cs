@@ -2,23 +2,18 @@ using UnityEngine;
 
 public class PlayerScript : MonoBehaviour
 {
-    public int maxHealth;
+    public CharacterState state;
     public HealthBar healthBar;
-    
-    private int curHealth;
+
     void Start()
     {
-        curHealth = maxHealth;
+        state = new CharacterState { maxHealth = 100, currentHealth = 100 };
     }
-
-    public void TakeDamageFromEnemys(int damage)
+    
+    public void TakeDamage(int damage)
     {
-        if (curHealth <= 0) return;
-        curHealth -= damage;
-        healthBar.UpdateHealth((float)curHealth/(float)maxHealth);
-        if (curHealth <= 0)
-        {
+        if(state.TakeDamage(damage))
             Destroy(gameObject);
-        }
+        healthBar.UpdateHealth((float)state.currentHealth/(float)state.maxHealth);
     }
 }

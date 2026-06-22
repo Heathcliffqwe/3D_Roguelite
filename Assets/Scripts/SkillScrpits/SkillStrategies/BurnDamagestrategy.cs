@@ -3,24 +3,24 @@ using UnityEngine;
 public class BurnDamagestrategy : ISkillStrategy
 {
     public BurnDamageConfig _config;
-    public BowScript _bow;
+    public StatSet statSet;
 
-    public BurnDamagestrategy(BurnDamageConfig config, BowScript bow)
+    public BurnDamagestrategy(BurnDamageConfig config, StatSet stats)
     {
         _config = config;
-        _bow = bow;
+
+        this.statSet = stats;
     }
 
     public void Activate()
     {
-        _bow.isBurning = true;
-        _bow.burningDamage = _config.burnDamage;
-        _bow.burningDuration = _config.skillDuration;
+        statSet.Add(new Modifier("BurningDamage", ModType.Increased, _config.burnDamage, this));
+        statSet.Add(new Modifier("BurningDuration", ModType.Added, _config.skillDuration, this));
     }
 
     public void Deactivate()
     {
-        _bow.isBurning = false;
+        statSet.RemoveBySource(this);
     }
 
     public void Apply()

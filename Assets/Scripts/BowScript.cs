@@ -6,8 +6,7 @@ public class BowScript : MonoBehaviour
     public float speed;
     public float damage;
     public bool isBurning;
-    public float burningDuration;
-    public float burningDamage; 
+    public StatSet stats;
     void Start()
     {
         Destroy(gameObject, 5f);
@@ -27,7 +26,7 @@ public class BowScript : MonoBehaviour
             if (isBurning)
             {
                 Debug.Log("Burning");
-                other.GetComponent<EnemyScript>().ApplyBurn(burningDuration,burningDamage);
+                other.GetComponent<EnemyScript>().ApplyBurn(stats.Get("BurningDuration", 0),(int)stats.Get("BurningDamage", 0));
             }
             transform.SetParent(other.transform);
             Destroy(gameObject, 1f);
